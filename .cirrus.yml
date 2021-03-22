@@ -4,6 +4,7 @@ container:
 
 task:
   install_script:
+    - apt-get update
     - apt-get install live-build
 
   test_script:

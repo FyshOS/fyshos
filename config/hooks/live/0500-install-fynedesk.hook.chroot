@@ -6,5 +6,6 @@ make
 sudo make install
 
 go get fyne.io/fyne/v2/cmd/fyne
+sudo mv ~/go/bin/fyne /usr/local/bin
 fyne get fyne.io/apps
 

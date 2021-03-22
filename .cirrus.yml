@@ -1,4 +1,5 @@
 compute_engine_instance:
+  image_project: cirrus-images
   image: debian:buster
   platform: linux
   memory: 8G

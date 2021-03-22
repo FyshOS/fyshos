@@ -1,0 +1,11 @@
+container:
+  image: debian:buster
+  memory: 8G
+
+task:
+  install_script:
+    - sudo apt-get install live-build
+
+  test_script:
+    - sudo lb build
+

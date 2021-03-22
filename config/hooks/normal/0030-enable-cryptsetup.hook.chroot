@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# Enable cryptsetup
+
+if [ -e /sbin/cryptsetup ]
+then
+	if [ ! -e /etc/initramfs-tools/conf.d/cryptsetup ]
+	then
+		mkdir -p /etc/initramfs-tools/conf.d
+
+cat > /etc/initramfs-tools/conf.d/cryptsetup << EOF
+# /etc/initramfs-tools/conf.d/cryptsetup
+
+CRYPTSETUP=yes
+export CRYPTSETUP
+EOF
+
+	fi
+fi

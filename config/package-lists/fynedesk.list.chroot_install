@@ -1,0 +1,8 @@
+golang
+gcc
+make
+ca-certificates
+git
+libgl1-mesa-dev
+xorg-dev
+

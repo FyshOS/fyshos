@@ -4,8 +4,8 @@ container:
 
 task:
   install_script:
-    - sudo apt-get install live-build
+    - apt-get install live-build
 
   test_script:
-    - sudo lb build
+    - lb build
 

@@ -1,5 +1,6 @@
-container:
+compute_engine_instance:
   image: debian:buster
+  platform: linux
   memory: 8G
 
 task:

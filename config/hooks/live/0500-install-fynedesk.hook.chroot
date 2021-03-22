@@ -1,7 +1,7 @@
 cd /tmp
 git clone https://github.com/fyne-io/fynedesk
-git checkout develop
 cd fynedesk
+git checkout develop
 make
 sudo make install
 

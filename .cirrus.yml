@@ -2,6 +2,7 @@ compute_engine_instance:
   image_project: cirrus-images
   image: debian:buster
   platform: linux
+  cpu: 2
   memory: 8G
 
 task:

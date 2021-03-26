@@ -1,4 +1,4 @@
 export PATH=$PATH:/usr/local/bin
-compton
+compton &
 exec fynedesk_runner
 

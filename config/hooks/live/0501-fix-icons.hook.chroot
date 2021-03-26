@@ -1,0 +1,1 @@
+sudo sed -i 's/mini.xterm/xterm-color/g' /usr/share/applications/debian-xterm.desktop

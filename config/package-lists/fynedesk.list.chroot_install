@@ -5,4 +5,5 @@ ca-certificates
 git
 libgl1-mesa-dev
 xorg-dev
+libpam0g-dev
 

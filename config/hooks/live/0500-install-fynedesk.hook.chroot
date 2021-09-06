@@ -7,13 +7,6 @@ sudo make install
 
 cd ../
 
-git clone https://github.com/fyne-io/fin
-cd fin
-make
-sudo make install
-
-cd ../
-
 go get fyne.io/fyne/v2/cmd/fyne
 sudo mv ~/go/bin/fyne /usr/local/bin
 

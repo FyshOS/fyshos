@@ -14,3 +14,7 @@ $ sudo lb build
 The resulting live-image-amd64.hybrid.iso file is your FyshOS live system
 and installer.
 
+## Boot
+
+![](img/boot.png)
+

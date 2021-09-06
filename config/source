@@ -1,9 +1,7 @@
 # config/source - options for live-build(7), source stage
 
-# $LB_SOURCE: set source option
-# (Default: false)
+# Set source option
 LB_SOURCE="false"
 
-# $LB_SOURCE_IMAGES: set image type
-# (Default: tar)
+# Set image type
 LB_SOURCE_IMAGES="tar"

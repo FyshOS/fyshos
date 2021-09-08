@@ -1,0 +1,7 @@
+#!/bin/sh
+
+lb config noauto \
+	--debian-installer-gui=true --debian-installer=live \
+	-d stable --debian-installer-distribution stable \
+	"${@}"
+

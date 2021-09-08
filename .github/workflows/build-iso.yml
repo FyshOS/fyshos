@@ -1,0 +1,39 @@
+name: Build ISO
+on: push
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare base
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install coreutils debootstrap debhelper debian-archive-keyring
+      - name: Install live-build
+        run: |
+          git clone https://salsa.debian.org/live-team/live-build.git
+          cd live-build
+          patch scripts/build/installer_debian-installer < ../installer.patch
+          make && sudo make install
+      - name: Config
+        run: |
+          sudo lb clean
+          lb config --debian-installer-gui=true --debian-installer=live -d stable --debian-installer-distribution stable
+      - name: Build
+        run: |
+          sudo lb build
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d_%H:%M')"
+      - name: Rename release files
+        run: mv live-image-amd64.hybrid.iso FyneOS-amd64-${{ steps.date.outputs.date }}.hybrid.iso
+      - name: Upload
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: testing
+          files: |
+            FyneOS-amd64-${{ steps.date.outputs.date }}.hybrid.iso
+

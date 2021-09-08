@@ -1,0 +1,10 @@
+--- /usr/lib/live/build/installer_debian-installer	2021-09-08 08:33:36.179278047 +0100
++++ /usr/lib/live/build/installer_debian-installer	2021-09-08 08:34:04.751324009 +0100
+@@ -613,6 +613,7 @@
+ 	fi
+ 
+ 	Echo_debug "Generating exclude list"
++	touch exclude # in case no commands add to this list
+ 
+ 	# Excluding udebs
+ 	for LOCATION in /usr/share/live/build/data/debian-cd "${LIVE_BUILD}/data/debian-cd"

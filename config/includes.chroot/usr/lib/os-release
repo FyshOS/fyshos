@@ -1,0 +1,8 @@
+PRETTY_NAME="FyshOS"
+NAME="FyshOS GNU/Linux"
+ID=fyshos
+ID_LIKE=debian
+HOME_URL="https://fyshos.com"
+SUPPORT_URL="https://fyshos.com/support"
+BUG_REPORT_URL="https://github.com/fynelabs/fyshos/issues/new"
+

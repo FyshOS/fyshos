@@ -2,6 +2,6 @@
 
 lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
-	-d bullseye --debian-installer-distribution bullseye \
+	-d stable --debian-installer-distribution stable \
 	"${@}"
 

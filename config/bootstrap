@@ -7,22 +7,22 @@ LB_ARCHITECTURE="amd64"
 LB_DISTRIBUTION="stable"
 
 # Select parent distribution to use
-LB_PARENT_DISTRIBUTION="testing"
+LB_PARENT_DISTRIBUTION="stable"
 
 # Select distribution to use in the chroot
-LB_DISTRIBUTION_CHROOT="testing"
+LB_DISTRIBUTION_CHROOT="stable"
 
 # Select parent distribution to use in the chroot
-LB_PARENT_DISTRIBUTION_CHROOT="testing"
+LB_PARENT_DISTRIBUTION_CHROOT="stable"
 
 # Select distribution to use in the final image
-LB_DISTRIBUTION_BINARY="testing"
+LB_DISTRIBUTION_BINARY="stable"
 
 # Select parent distribution to use in the final image
-LB_PARENT_DISTRIBUTION_BINARY="testing"
+LB_PARENT_DISTRIBUTION_BINARY="stable"
 
 # Select parent distribution for debian-installer to use
-LB_PARENT_DEBIAN_INSTALLER_DISTRIBUTION="testing"
+LB_PARENT_DEBIAN_INSTALLER_DISTRIBUTION="stable"
 
 # Select archive areas to use
 LB_ARCHIVE_AREAS="main"

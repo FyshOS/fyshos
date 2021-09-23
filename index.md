@@ -8,6 +8,8 @@ Built using modern tools and the Go language the apps are entirely created using
 This project is just getting started but you can help out by 
 Reporting issues, adding pull requests or just requesting cool new features in the issue tracker!
 
+> Let’s bring joy back to the desktop - and to cross-platform development!
+
 ## Screenshots
 
 ![](https://github.com/fynelabs/fyshos/blob/main/img/boot.png?raw=true)

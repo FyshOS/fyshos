@@ -1,0 +1,3 @@
+# Without a root user installer will configure sudo instead
+d-i passwd/root-login boolean false
+

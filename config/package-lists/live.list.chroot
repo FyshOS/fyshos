@@ -3,5 +3,4 @@ live-config
 live-config-systemd
 lsb-release
 debian-installer-launcher
-sudo
 

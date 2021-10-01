@@ -17,4 +17,5 @@ and installer.
 ## Boot
 
 ![](img/boot.png)
+![](img/neofetch.png)
 

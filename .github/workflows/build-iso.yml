@@ -20,7 +20,7 @@ jobs:
       - name: Config
         run: |
           sudo lb clean
-          lb config
+          lb --debug config
       - name: Build
         run: |
           sudo lb build

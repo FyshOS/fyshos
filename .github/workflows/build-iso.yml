@@ -14,8 +14,8 @@ jobs:
       - name: Install live-build
         run: |
           git clone https://salsa.debian.org/live-team/live-build.git
-          git checkout da16d81ed
           cd live-build
+          git checkout da16d81ed
           patch scripts/build/installer_debian-installer < ../installer.patch
           make && sudo make install
       - name: Config

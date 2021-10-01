@@ -36,5 +36,5 @@ jobs:
         with:
           tag_name: testing
           files: |
-            FyneOS-amd64-${{ steps.date.outputs.date }}.hybrid.iso
+            FyshOS-amd64-${{ steps.date.outputs.date }}.hybrid.iso
 

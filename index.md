@@ -12,4 +12,4 @@ Reporting issues, adding pull requests or just requesting cool new features in t
 
 ## Screenshots
 
-![](https://github.com/fynelabs/fyshos/blob/main/img/boot.png?raw=true)
+![](https://github.com/FyshOS/fyshos/blob/main/img/boot.png?raw=true)

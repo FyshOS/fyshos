@@ -7,7 +7,7 @@ On a debian system (bullseye or later):
 ```
 $ sudo apt-get install live-build
 $ sudo lb clean
-$ lb config
+$ ./prep.sh
 $ sudo lb build
 ```
 

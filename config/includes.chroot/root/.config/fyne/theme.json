@@ -9,6 +9,8 @@
     "foreground": "#ffffffff",
     "hover": "#ffffff0f",
     "inputBackground": "#ffffff19",
+    "menuBackground": "#00002aff",
+    "overlayBackground": "#000032ff",
     "placeholder": "#b2b2b2ff",
     "pressed": "#ffffff66",
     "scrollBar": "#00000099",

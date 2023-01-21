@@ -1,1 +1,1 @@
-deb [trusted=yes] https://dist.fyshos.com/debian bullseye main
+deb [trusted=yes] https://dist.fyshos.com/debian stable main

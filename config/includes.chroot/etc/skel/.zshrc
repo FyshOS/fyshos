@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-source .fyshprompt.sh
+source ~/.fyshprompt.sh

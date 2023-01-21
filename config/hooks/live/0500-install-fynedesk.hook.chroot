@@ -1,5 +1,5 @@
 cd /tmp
-git clone https://github.com/fyne-io/fynedesk
+git clone https://github.com/fyshos/fynedesk
 cd fynedesk
 git checkout develop
 make

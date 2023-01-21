@@ -1,6 +1,6 @@
 cd /tmp
 
-git clone https://github.com/fyne-io/fin
+git clone https://github.com/fyshos/fin
 cd fin
 make
 sudo make install

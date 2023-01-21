@@ -68,7 +68,7 @@ LB_ISO_PREPARER="live-build 20210407; https://debian-live.alioth.debian.org/live
 LB_ISO_PUBLISHER="Live Systems project; https://debian-live.alioth.debian.org/; debian-live@lists.debian.org"
 
 # Set iso volume (max 32 chars)
-LB_ISO_VOLUME="Debian testing 20210905-21:27"
+LB_ISO_VOLUME="FyshOS 20230120-18:03"
 
 # Set jffs2 eraseblock size
 LB_JFFS2_ERASEBLOCK=""

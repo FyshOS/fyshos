@@ -1,7 +1,7 @@
 [Image]
 Architecture: amd64
 Archive-Areas: main
-Distribution: testing
+Distribution: stable
 Mirror-Bootstrap: http://deb.debian.org/debian/
 
 [FIXME]

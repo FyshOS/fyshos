@@ -26,7 +26,7 @@ function precmd() {
 
 
 function clock {
-  PREF=`json_value ~/.config/fyne/com.fyshos.fynedesk/preferences.json clockformatting`
+  PREF=`json_value ~/.config/fyne/com.fyshos.fynedesk/preferences.json clockformatting 2>/dev/null`
 
   if [[ "x$PREF" == "x24h" ]]; then
     FMT="%-H:%M:%S"
@@ -47,7 +47,7 @@ function status {
 }
 
 function scminfo {
-  GIT=`git rev-parse --abbrev-ref HEAD`
+  GIT=`git rev-parse --abbrev-ref HEAD 2>/dev/null`
   if [ $? -eq 0 ]; then
     if [ -z "$(git status --porcelain)" ]; then
       echo -n "%F{120}"

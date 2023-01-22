@@ -1,0 +1,4 @@
+# TESTING can we just call the bash profile?
+
+. /etc/profile
+

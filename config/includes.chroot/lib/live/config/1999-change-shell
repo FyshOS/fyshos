@@ -1,5 +1,4 @@
 #!/bin/sh
 
-sed -i 's/\/bin\/bash/\/bin\/zsh/g' /etc/adduser.conf
 chsh -s /bin/zsh user
 

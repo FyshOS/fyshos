@@ -46,11 +46,10 @@ function status {
   fi
 }
 
-user=$'%F{027}%n'
-host=$'%F{027}%m'
+user=$'%F{027}%n@%m'
 workingDir=$'%F{007}%d'
 newLine=$'\n'
-PROMPT=${host}\ ${workingDir}\ ${newLine}${user}" %F{166}><> %1 %f"
+PROMPT=${user}\ ${workingDir}\ ${newLine}"%F{166}><> %1 %f"
 
 dateTime=$'$(status)$TIMED%F{007} $(clock)'
 upLine=$'\e[1A'

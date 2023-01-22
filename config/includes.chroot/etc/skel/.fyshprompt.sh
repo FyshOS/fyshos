@@ -17,7 +17,7 @@ function precmd() {
   if [ $timer ]; then
     elapsed=$(($SECONDS - $timer))
 
-    export TIMED="${elapsed}s%{$reset_color%}"
+    export TIMED=" ${elapsed}s%{$reset_color%}"
   else
     export TIMED=""
   fi
@@ -46,13 +46,26 @@ function status {
   fi
 }
 
-user=$'%F{027}%n@%m'
-workingDir=$'%F{007}%d'
-newLine=$'\n'
-PROMPT=${user}\ ${workingDir}\ ${newLine}"%F{166}><> %1 %f"
+function scminfo {
+  GIT=`git rev-parse --abbrev-ref HEAD`
+  if [ $? -eq 0 ]; then
+    if [ -z "$(git status --porcelain)" ]; then
+      echo -n "%F{120}"
+    else
+      echo -n "%F{214}"
+    fi
+
+    echo "[${GIT}] "
+  fi
+}
 
 dateTime=$'$(status)$TIMED%F{007} $(clock)'
 upLine=$'\e[1A'
 downLine=$'\e[1B'
 RPROMPT=%{${upLine}%}${dateTime}%{${downLine}%}
+
+user=$'%F{027}%n@%m'
+workingDir=$'%F{007}%d'
+newLine=$'\n'
+PROMPT=${user}\ ${workingDir}\ ${newLine}$'$(scminfo)'"%F{166}><> %1 %f"
 

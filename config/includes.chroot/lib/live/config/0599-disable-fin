@@ -2,5 +2,3 @@
 
 systemctl stop fin
 
-echo "DSHELL=/bin/zsh" > ./config/includes.chroot/etc/adduser.conf
-

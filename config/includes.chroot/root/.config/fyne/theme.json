@@ -1,0 +1,24 @@
+{
+  "Colors": {
+    "background": "#000020ff",
+    "button": "#1f4389ff",
+    "disabledButton": "#1f2349ff",
+    "disabled": "ffffff42",
+    "error": "#f44336ff",
+    "focus": "#1f4389ff",
+    "foreground": "#ffffffff",
+    "hover": "#ffffff0f",
+    "inputBackground": "#ffffff19",
+    "menuBackground": "#00002aff",
+    "overlayBackground": "#000032ff",
+    "placeholder": "#b2b2b2ff",
+    "pressed": "#ffffff66",
+    "scrollBar": "#00000099",
+    "shadow": "#00000066",
+    "fynedeskPanelBackground": "#000020cc"
+  },
+  "Colors-light": {
+    "background": "#3333ccff",
+    "fynedeskPanelBackground": "#3333ccaa"
+  }
+}

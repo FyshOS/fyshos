@@ -37,6 +37,10 @@ function clock {
   echo "[$(date +"${FMT}")]"
 }
 
+function exists {
+  type "$1" >/dev/null 2>/dev/null
+}
+
 function status {
   RET=$(echo $?)
   if [ $RET -eq 0 ]; then
@@ -69,3 +73,7 @@ workingDir=$'%F{007}%d'
 newLine=$'\n'
 PROMPT=${user}\ ${workingDir}\ ${newLine}$'$(scminfo)'"%F{166}><> %1 %f"
 
+if exists figlet; then
+  name="$(tr '[:lower:]' '[:upper:]' <<< ${USER:0:1})${USER:1}"
+  echo "Hi $name!" | figlet -c -f doom
+fi

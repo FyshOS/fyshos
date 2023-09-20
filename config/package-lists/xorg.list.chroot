@@ -1,4 +1,16 @@
-xorg
+libgl1
+libgl1-mesa-dri
+libglu1-mesa
+x11-session-utils
+x11-xkb-utils
+x11-xserver-utils
+xauth
+xfonts-scalable
+xfonts-utils
+xinit
+xkb-data
+xserver-xorg
+
 xbacklight
 compton
 

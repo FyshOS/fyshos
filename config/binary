@@ -24,11 +24,23 @@ LB_BOOTLOADER_BIOS="syslinux"
 # Set EFI bootloader
 LB_BOOTLOADER_EFI="grub-efi"
 
+# Set bootloaders
+LB_BOOTLOADERS=""
+
 # Set checksums
 LB_CHECKSUMS="md5"
 
 # Set compression
 LB_COMPRESSION="none"
+
+# Support dm-verity on rootfs
+LB_DM_VERITY=""
+
+# Support FEC on dm-verity rootfs
+LB_DM_VERITY_FEC_ROOTS=""
+
+# Set sign script for roothash for dm-verity rootfs
+LB_DM_VERITY_SIGN=""
 
 # Set zsync
 LB_ZSYNC="true"
@@ -92,10 +104,10 @@ LB_ONIE="false"
 LB_ONIE_KERNEL_CMDLINE=""
 
 # Set inclusion of firmware packages in debian-installer
-LB_FIRMWARE_BINARY="true"
+LB_FIRMWARE_BINARY="false"
 
 # Set inclusion of firmware packages in the live image
-LB_FIRMWARE_CHROOT="true"
+LB_FIRMWARE_CHROOT="false"
 
 # Set swap file path
 LB_SWAP_FILE_PATH=""

@@ -2,3 +2,5 @@ sudo
 grub-pc
 zsh
 figlet
+git
+make

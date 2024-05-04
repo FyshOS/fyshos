@@ -11,9 +11,16 @@ go get fyne.io/fyne/v2/cmd/fyne
 sudo mv ~/go/bin/fyne /usr/local/bin
 FYNE=/usr/local/bin/fyne
 
+# utilities
 $FYNE get github.com/fyne-io/terminal/cmd/fyneterm
 $FYNE get github.com/fyne-io/calculator
 $FYNE get github.com/fyshos/textedit
 
+# games
+$FYNE get github.com/fyne-io/solitaire
+$FYNE get github.com/mevdschee/fyne-mines
+$FYNE get github.com/scastiel/gordle
+
+# app manager
 sudo apt-get update
 sudo apt-get install apps

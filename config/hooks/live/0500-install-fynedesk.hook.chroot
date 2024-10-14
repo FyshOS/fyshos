@@ -22,9 +22,9 @@ $FYNE get github.com/mevdschee/fyne-mines
 $FYNE get github.com/scastiel/gordle
 
 # app manager
-sudo apt-get update
-# sudo apt-get install apps
-sudo apt-get install curl
+sudo apt-get -y update
+# sudo apt-get install -y apps
+sudo apt-get install -y curl
 curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/FyshOS/apps/latest/linux-amd64/Fyne%20Applications-linux-amd64-0a2366a.tar.xz | tar xvf - -C /
 
 # Install the current testing app editor

@@ -25,7 +25,7 @@ $FYNE get github.com/scastiel/gordle
 sudo apt-get -y update
 # sudo apt-get install -y apps
 sudo apt-get install -y curl
-curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/FyshOS/apps/latest/linux-amd64/Fyne%20Applications-linux-amd64-0a2366a.tar.xz | tar xvf - -C /
+curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/FyshOS/apps/latest/linux-amd64/Fyne%20Applications-linux-amd64-0a2366a.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor
-curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/fynelabs/fysion/latest/linux-amd64/Fysion-linux-amd64-v0.1.4.tar.xz | tar xvf - -C /
+curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/fynelabs/fysion/latest/linux-amd64/Fysion-linux-amd64-v0.1.4.tar.xz | tar xJf - -C /

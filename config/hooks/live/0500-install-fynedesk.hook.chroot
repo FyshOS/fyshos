@@ -15,11 +15,11 @@ FYNE=/usr/local/bin/fyne
 $FYNE get github.com/fyne-io/terminal/cmd/fyneterm
 $FYNE get github.com/fyne-io/calculator
 $FYNE get github.com/fyshos/textedit
+$FYNE get github.com/fyshos/focus
 
 # games
 $FYNE get github.com/fyne-io/solitaire
 $FYNE get github.com/mevdschee/fyne-mines
-$FYNE get github.com/scastiel/gordle
 
 # app manager
 sudo apt-get -y update

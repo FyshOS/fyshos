@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=FyshOS
+Description=FyshOS bubble load screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/fyshos
+ScriptFile=/usr/share/plymouth/themes/fyshos/fyshos.script
+

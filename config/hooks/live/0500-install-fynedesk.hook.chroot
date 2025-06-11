@@ -29,7 +29,7 @@ sudo apt-get install -y curl xz-utils
 curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/FyshOS/apps/latest/linux-amd64/Fyne%20Applications-linux-amd64-0a2366a.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor
-curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/ApptrixAI/Apptrix.org/latest/linux-amd64/Apptrix.org-linux-amd64-431c650.tar.xz | tar xJf - -C /
+curl -s https://geoffrey-artefacts.fynelabs.com/github/andydotxyz/ApptrixAI/Apptrix.org/816/linux-amd64/Apptrix.org-linux-amd64-431c650.tar.xz | tar xJf - -C /
 
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local

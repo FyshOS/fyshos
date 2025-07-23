@@ -1,6 +1,6 @@
 sudo
 grub-pc
-zsh
+fish
 figlet
 git
 make

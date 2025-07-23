@@ -8,19 +8,19 @@ sudo make install
 
 cd ../
 
-go install fyne.io/fyne/v2/cmd/fyne@develop
+go install fyne.io/tools/cmd/fyne@develop
 sudo mv ~/go/bin/fyne /usr/local/bin
 FYNE=/usr/local/bin/fyne
 
 # utilities
-$FYNE get github.com/fyne-io/terminal/cmd/fyneterm
-$FYNE get github.com/fyshos/calculator
-$FYNE get github.com/fyshos/textedit
-$FYNE get github.com/fyshos/focus
+$FYNE install github.com/fyne-io/terminal/cmd/fyneterm@master
+$FYNE install github.com/fyshos/calculator@latest
+$FYNE install github.com/fyshos/textedit@latest
+$FYNE install github.com/fyshos/focus@latest
 
 # games
-$FYNE get github.com/fyne-io/solitaire
-$FYNE get github.com/mevdschee/fyne-mines
+$FYNE install github.com/fyne-io/solitaire@latest
+$FYNE install github.com/mevdschee/fyne-mines@latest
 
 # app manager
 sudo apt-get -y update

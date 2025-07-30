@@ -7,5 +7,5 @@ cd fin
 make
 sudo make install
 
-systemctl enable fin
+systemctl --global enable fin
 

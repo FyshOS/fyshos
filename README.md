@@ -16,6 +16,8 @@ and installer.
 
 ## Boot
 
+Note that the default `user` has password `live`.
+
 ![](img/boot.png)
 ![](img/neofetch.png)
 

@@ -33,3 +33,6 @@ curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix.o
 
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local
+
+rm -rf ~/go
+rm -rf ~/.cache/go-build

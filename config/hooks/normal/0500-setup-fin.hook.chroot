@@ -9,3 +9,5 @@ sudo make install
 
 sudo systemctl --system enable fin
 
+rm -rf ~/go
+rm -rf ~/.cache/go-build

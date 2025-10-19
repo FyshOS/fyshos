@@ -28,13 +28,12 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "BUILDDATE=$(date +'%Y-%m-%d_%H:%M')" >> $GITHUB_ENV
+        run: echo "DATE=$(date +'%Y-%m-%d_%H:%M')" >> "$GITHUB_OUTPUT"
       - name: Rename release files
-        run: mv live-image-amd64.hybrid.iso FyshOS-amd64-$BUILDDATE.hybrid.iso
+        run: mv live-image-amd64.hybrid.iso FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
       - name: Upload
         uses: softprops/action-gh-release@v1
         with:
           tag_name: testing
           files: |
-            FyshOS-amd64-$BUILDDATE.hybrid.iso
-
+            FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso

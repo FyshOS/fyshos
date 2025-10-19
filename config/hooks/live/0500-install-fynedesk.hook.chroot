@@ -8,7 +8,7 @@ sudo make install
 
 cd ../
 
-go install fyne.io/tools/cmd/fyne@1755cd9a
+go install fyne.io/tools/cmd/fyne@b9ad9767c
 sudo mv ~/go/bin/fyne /usr/local/bin
 FYNE=/usr/local/bin/fyne
 

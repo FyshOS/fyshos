@@ -1,3 +1,5 @@
 sudo apt-get install -y plymouth plymouth-themes
 sudo plymouth-set-default-theme fyshos
 
+# todo re-enable when we figure out the conflict
+sudo systemctl disable plymouth

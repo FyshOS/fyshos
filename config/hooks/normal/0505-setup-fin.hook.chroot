@@ -4,10 +4,14 @@ cd /tmp
 
 git clone https://github.com/fyshos/fin
 cd fin
+
+# remove alias for testing
+sudo sed -i '/Alias/d' fin.service
+
 make
 sudo make install PREFIX=/usr
 
-sudo cat "/usr/bin/fin" > /etc/X11/default-display-manager
+sudo echo "/usr/bin/fin" > /etc/X11/default-display-manager
 sudo systemctl enable fin
 
 rm -rf ~/go

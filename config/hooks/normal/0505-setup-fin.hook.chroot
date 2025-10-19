@@ -5,9 +5,10 @@ cd /tmp
 git clone https://github.com/fyshos/fin
 cd fin
 make
-sudo make install
+sudo make install PREFIX=/usr
 
-sudo systemctl --system enable fin
+sudo cat "/usr/bin/fin" > /etc/X11/default-display-manager
+sudo systemctl enable fin
 
 rm -rf ~/go
 rm -rf ~/.cache/go-build

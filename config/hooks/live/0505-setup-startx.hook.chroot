@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# fin is disabled on live so we start Xorg directly
+sudo systemctl enable startx
+

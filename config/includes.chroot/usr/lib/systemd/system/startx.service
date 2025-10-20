@@ -1,0 +1,25 @@
+[Unit]
+Description=X11 session for live user
+After=graphical.target systemd-user-sessions.service
+
+[Service]
+User=live
+WorkingDirectory=~
+
+PAMName=login
+Environment=XDG_SESSION_TYPE=x11
+TTYPath=/dev/tty8
+StandardInput=tty
+UnsetEnvironment=TERM
+
+UtmpIdentifier=tty8
+UtmpMode=user
+
+StandardOutput=journal
+ExecStartPre=/usr/bin/chvt 8
+ExecStart=/usr/bin/startx -- vt8 -keeptty -verbose 3 -logfile /dev/null
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=graphical.target

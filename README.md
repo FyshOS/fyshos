@@ -19,5 +19,5 @@ and installer.
 Note that the default `user` has password `live`.
 
 ![](img/boot.png)
-![](img/neofetch.png)
+![](img/fastfetch.png)
 

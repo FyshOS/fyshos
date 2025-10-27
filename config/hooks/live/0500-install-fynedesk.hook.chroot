@@ -8,7 +8,8 @@ sudo make install
 
 cd ../
 
-go install fyne.io/tools/cmd/fyne@b9ad9767c
+go install fyne.io/tools/cmd/fyne@main
+go install github.com/fyshos/saver/cmd/fyshsaver@latest
 sudo mv ~/go/bin/fyne /usr/local/bin
 FYNE=/usr/local/bin/fyne
 

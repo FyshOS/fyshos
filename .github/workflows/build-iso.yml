@@ -37,3 +37,21 @@ jobs:
           tag_name: testing
           files: |
             FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
+
+      - name: Config 32bit
+        run: |
+          sudo lb clean
+          ./prep-32.sh
+          cp config/build-32 config/build
+      - name: Build 32bit
+        run: |
+          sudo lb build
+
+      - name: Rename release files 32bit
+        run: mv live-image-i386.hybrid.iso FyshOS-i386-${{ steps.date.outputs.DATE }}.hybrid.iso
+      - name: Upload 32bit
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: testing
+          files: |
+            FyshOS-i386-${{ steps.date.outputs.DATE }}.hybrid.iso

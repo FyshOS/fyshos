@@ -1,0 +1,10 @@
+[Image]
+Architecture: i318
+Archive-Areas: main non-free-firmware
+Distribution: stable
+Mirror-Bootstrap: http://deb.debian.org/debian/
+
+[FIXME]
+Configuration-Version: 1:20190311
+Name: live-image
+Type: iso-hybrid

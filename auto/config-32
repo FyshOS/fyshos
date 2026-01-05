@@ -3,6 +3,6 @@
 lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
 	-d stable --debian-installer-distribution stable \
-	-a i386 \
+	-a i386 --linux-flavours 686 \
 	"${@}"
 

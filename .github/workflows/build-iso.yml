@@ -40,10 +40,12 @@ jobs:
 
       - name: Config 32bit
         run: |
-          cp config/build-32 config/build
-          cp config/bootstrap-32 config/bootstrap
-          cp config/chroot-32 config/chroot
           cp auto/config-32 auto/config
+          sed -i 's/amd64/i386/g' config/build
+          sed -i 's/amd64/i386/g' config/bootstrap
+          sed -i 's/amd64/i386/g' config/chroot
+
+          sed -i 's/amd64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
 
           sudo lb clean
           ./prep-32.sh

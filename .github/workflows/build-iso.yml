@@ -49,6 +49,7 @@ jobs:
           sed -i 's/stable/bookworm/g' config/chroot
 
           sed -i 's/amd64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
+          sed -i 's/fastfetch/neofetch/g' config/package-lists/utils.list.chroot
 
           sudo lb clean --purge
           ./prep-32.sh

@@ -40,11 +40,13 @@ jobs:
 
       - name: Config 32bit
         run: |
-          sudo lb clean
-          ./prep-32.sh
           cp config/build-32 config/build
           cp config/bootstrap-32 config/bootstrap
           cp config/chroot-32 config/chroot
+          cp auto/config-32 auto/config
+
+          sudo lb clean
+          ./prep-32.sh
       - name: Build 32bit
         run: |
           sudo lb build

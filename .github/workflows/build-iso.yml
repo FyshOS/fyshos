@@ -47,7 +47,7 @@ jobs:
 
           sed -i 's/amd64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
 
-          sudo lb clean
+          sudo lb clean --purge
           ./prep-32.sh
       - name: Build 32bit
         run: |

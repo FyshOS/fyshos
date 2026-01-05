@@ -42,8 +42,11 @@ jobs:
         run: |
           cp auto/config-32 auto/config
           sed -i 's/amd64/i386/g' config/build
+          sed -i 's/stable/bookworm/g' config/build
           sed -i 's/amd64/i386/g' config/bootstrap
+          sed -i 's/stable/bookworm/g' config/bootstrap
           sed -i 's/amd64/i386/g' config/chroot
+          sed -i 's/stable/bookworm/g' config/chroot
 
           sed -i 's/amd64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
 

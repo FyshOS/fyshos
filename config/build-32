@@ -1,5 +1,5 @@
 [Image]
-Architecture: i318
+Architecture: i386
 Archive-Areas: main non-free-firmware
 Distribution: stable
 Mirror-Bootstrap: http://deb.debian.org/debian/

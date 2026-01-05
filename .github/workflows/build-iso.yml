@@ -10,7 +10,7 @@ jobs:
       - name: Prepare base
         run: |
           sudo apt-get update
-          sudo apt-get -y install coreutils debootstrap debhelper debian-archive-keyring fonts-open-sans
+          sudo apt-get -y install coreutils debootstrap debhelper debian-archive-keyring imagemagick fonts-open-sans
       - name: Install live-build
         run: |
           git clone https://salsa.debian.org/live-team/live-build.git
@@ -43,6 +43,8 @@ jobs:
           sudo lb clean
           ./prep-32.sh
           cp config/build-32 config/build
+          cp config/bootstrap-32 config/bootstrap
+          cp config/chroot-32 config/chroot
       - name: Build 32bit
         run: |
           sudo lb build

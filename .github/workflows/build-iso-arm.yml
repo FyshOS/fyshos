@@ -1,0 +1,50 @@
+name: Build ISO
+on: push
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare base
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install coreutils debootstrap debhelper debian-archive-keyring imagemagick fonts-open-sans
+      - name: Install live-build
+        run: |
+          git clone https://salsa.debian.org/live-team/live-build.git
+          cd live-build
+          git checkout da16d81ed
+          patch scripts/build/installer_debian-installer < ../installer.patch
+          make && sudo make install
+      - name: Config Arm 64bit
+        run: |
+          cp auto/config-arm64 auto/config
+          sed -i 's/amd64/arm64/g' config/build
+          sed -i 's/amd64/arm64/g' config/bootstrap
+          sed -i 's/amd64/arm64/g' config/chroot
+
+          sed -i 's/amd64/arm64/g' config/hooks/live/0500-install-fynedesk.hook.chroot
+
+          sudo lb clean --purge
+          ./prep.sh arm64
+      - name: Build Arm 64bit
+        run: |
+          sudo lb build
+
+      - name: Rename release files Arm 64bit
+        run: mv live-image-arm64.hybrid.iso FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
+      - name: Get current date
+        id: date
+        run: echo "DATE=$(date +'%Y-%m-%d_%H:%M')" >> "$GITHUB_OUTPUT"
+      - name: Rename release files
+        run: mv live-image-amd64.hybrid.iso FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
+      - name: Upload Arm 64bit
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: testing
+          files: |
+            FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
+
+

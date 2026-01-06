@@ -26,6 +26,7 @@ jobs:
           sed -i 's/amd64/arm64/g' config/chroot
 
           sed -i 's/amd64/arm64/g' config/hooks/live/0500-install-fynedesk.hook.chroot
+          sed -i 's/grub-pc/grub-efi-arm64/g' config/package-lists/utils.list.chroot
 
           sudo lb clean --purge
           ./prep.sh arm64

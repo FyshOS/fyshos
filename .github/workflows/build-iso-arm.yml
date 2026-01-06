@@ -1,4 +1,4 @@
-name: Build ISO
+name: Build ISO (Arm)
 on: push
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           sudo lb build
 
       - name: Rename release files Arm 64bit
-        run: mv live-image-arm64.hybrid.iso FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
+        run: mv live-image-arm64.hybrid.iso FyshOS-${{ steps.date.outputs.DATE }}-arm64.hybrid.iso
       - name: Get current date
         id: date
         run: echo "DATE=$(date +'%Y-%m-%d_%H:%M')" >> "$GITHUB_OUTPUT"

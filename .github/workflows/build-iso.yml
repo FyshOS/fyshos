@@ -1,4 +1,4 @@
-name: Build ISO
+name: Build ISO (Intel)
 on: push
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
         id: date
         run: echo "DATE=$(date +'%Y-%m-%d_%H:%M')" >> "$GITHUB_OUTPUT"
       - name: Rename release files
-        run: mv live-image-amd64.hybrid.iso FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
+        run: mv live-image-amd64.hybrid.iso FyshOS-${{ steps.date.outputs.DATE }}-amd64.hybrid.iso
       - name: Upload
         uses: softprops/action-gh-release@v1
         with:
@@ -58,7 +58,7 @@ jobs:
           sudo lb build
 
       - name: Rename release files 32bit
-        run: mv live-image-i386.hybrid.iso FyshOS-i386-${{ steps.date.outputs.DATE }}.hybrid.iso
+        run: mv live-image-i386.hybrid.iso FyshOS-${{ steps.date.outputs.DATE }}-i386.hybrid.iso
       - name: Upload 32bit
         uses: softprops/action-gh-release@v1
         with:

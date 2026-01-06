@@ -38,21 +38,45 @@ jobs:
           files: |
             FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
 
+      - name: Config Arm 64bit
+        run: |
+          cp auto/config-arm64 auto/config
+          sed -i 's/amd64/arm64/g' config/build
+          sed -i 's/amd64/arm64/g' config/bootstrap
+          sed -i 's/amd64/arm64/g' config/chroot
+
+          sed -i 's/amd64/arm64/g' config/hooks/live/0500-install-fynedesk.hook.chroot
+
+          sudo lb clean --purge
+          ./prep.sh arm64
+      - name: Build Arm 64bit
+        run: |
+          sudo lb build
+
+      - name: Rename release files Arm 64bit
+        run: mv live-image-arm64.hybrid.iso FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
+      - name: Upload Arm 64bit
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: testing
+          files: |
+            FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
+
       - name: Config 32bit
         run: |
           cp auto/config-32 auto/config
-          sed -i 's/amd64/i386/g' config/build
+          sed -i 's/arm64/i386/g' config/build
           sed -i 's/stable/bookworm/g' config/build
-          sed -i 's/amd64/i386/g' config/bootstrap
+          sed -i 's/arm64/i386/g' config/bootstrap
           sed -i 's/stable/bookworm/g' config/bootstrap
-          sed -i 's/amd64/i386/g' config/chroot
+          sed -i 's/arm64/i386/g' config/chroot
           sed -i 's/stable/bookworm/g' config/chroot
 
-          sed -i 's/amd64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
+          sed -i 's/arm64/386/g' config/hooks/live/0500-install-fynedesk.hook.chroot
           sed -i 's/fastfetch/neofetch/g' config/package-lists/utils.list.chroot
 
           sudo lb clean --purge
-          ./prep-32.sh
+          ./prep.sh i386
       - name: Build 32bit
         run: |
           sudo lb build

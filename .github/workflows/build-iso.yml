@@ -36,7 +36,7 @@ jobs:
         with:
           tag_name: testing
           files: |
-            FyshOS-amd64-${{ steps.date.outputs.DATE }}.hybrid.iso
+            FyshOS-${{ steps.date.outputs.DATE }}-amd64.hybrid.iso
 
       - name: Config 32bit
         run: |
@@ -64,4 +64,4 @@ jobs:
         with:
           tag_name: testing
           files: |
-            FyshOS-i386-${{ steps.date.outputs.DATE }}.hybrid.iso
+            FyshOS-${{ steps.date.outputs.DATE }}-i386.hybrid.iso

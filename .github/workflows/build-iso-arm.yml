@@ -46,6 +46,5 @@ jobs:
         with:
           tag_name: testing
           files: |
-            FyshOS-arm64-${{ steps.date.outputs.DATE }}.hybrid.iso
-
+            FyshOS-${{ steps.date.outputs.DATE }}-arm64.hybrid.iso
 

@@ -8,4 +8,7 @@ xorg-dev
 libpam0g-dev
 libwayland-dev
 libxkbcommon-dev
+libwpewebkit-2.0-1
+libgbm-dev
+libasound2-dev
 

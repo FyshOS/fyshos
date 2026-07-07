@@ -1,4 +1,3 @@
 export PATH=$PATH:/usr/local/bin
-compton &
-exec fynedesk_runner
+exec tyde_runner
 

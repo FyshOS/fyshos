@@ -26,7 +26,7 @@ function precmd() {
 
 
 function clock {
-  PREF=`json_value ~/.config/fyne/com.fyshos.fynedesk/preferences.json clockformatting 2>/dev/null`
+  PREF=`json_value ~/.config/fyne/com.fyshos.tyde/preferences.json clockformatting 2>/dev/null`
 
   if [[ "x$PREF" == "x24h" ]]; then
     FMT="%-H:%M:%S"

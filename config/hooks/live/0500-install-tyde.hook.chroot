@@ -1,7 +1,7 @@
 umask 002
 cd /tmp
-git clone https://github.com/fyshos/fynedesk
-cd fynedesk
+git clone https://github.com/fyshos/tyde
+cd tyde
 git checkout develop
 make
 sudo make install
@@ -19,10 +19,16 @@ $FYNE install github.com/fyne-io/terminal/cmd/fyneterm@master
 $FYNE install github.com/fyshos/calculator@latest
 $FYNE install github.com/fyshos/textedit@latest
 $FYNE install github.com/fyshos/focus@latest
+$FYNE install github.com/fyshos/surfy@latest
 
 # games
 $FYNE install github.com/fyne-io/solitaire@latest
 $FYNE install github.com/mevdschee/fyne-mines@latest
+$FYNE install github.com/fyshos/fong@latest
+$FYNE install github.com/fyshos/tidebreaker@latest
+$FYNE install github.com/fyshos/elemental@latest
+$FYNE install github.com/fyshos/starbreaker@latest
+
 
 # app manager
 sudo apt-get -y update

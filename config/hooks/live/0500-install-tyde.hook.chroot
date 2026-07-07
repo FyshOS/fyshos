@@ -20,6 +20,10 @@ $FYNE install github.com/fyshos/calculator@latest
 $FYNE install github.com/fyshos/textedit@latest
 $FYNE install github.com/fyshos/focus@latest
 $FYNE install github.com/fyshos/surfy@latest
+$FYNE install github.com/fyshos/movies@latest
+$FYNE install github.com/andydotxyz/slydes@latest
+$FYNE install github.com/andydotxyz/fomato@latest
+
 
 # games
 $FYNE install github.com/fyne-io/solitaire@latest
@@ -28,6 +32,7 @@ $FYNE install github.com/fyshos/fong@latest
 $FYNE install github.com/fyshos/tidebreaker@latest
 $FYNE install github.com/fyshos/elemental@latest
 $FYNE install github.com/fyshos/starbreaker@latest
+$FYNE install github.com/andydotxyz/flappy@latest
 
 
 # app manager

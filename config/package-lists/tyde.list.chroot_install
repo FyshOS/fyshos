@@ -10,7 +10,13 @@ libwayland-dev
 libxkbcommon-dev
 libglib2.0-dev
 libgio-2.0-dev
+# WebKit engine + the legacy WPEBackend-FDO display stack. surfy's webview is
+# built with -tags wpe_fdo (see 0500-install-tyde.hook.chroot) because Debian's
+# wpewebkit is built without the WPEPlatform headless headers.
 libwpewebkit-2.0-dev
+libwpe-1.0-dev
+libwpebackend-fdo-1.0-dev
 libgbm-dev
 libasound2-dev
+libgstreamer1.0-dev
 

@@ -44,10 +44,10 @@ $FYNE install github.com/andydotxyz/flappy@latest
 sudo apt-get -y update
 # sudo apt-get install -y apps
 sudo apt-get install -y curl xz-utils
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${DEB_BUILD_ARCH}/Fyne%20Applications-linux-${DEB_BUILD_ARCH}-caec085.tar.xz | tar xf - -C /
+curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${DEB_BUILD_ARCH}/Fyne%20Applications-linux-${DEB_BUILD_ARCH}-caec085.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${DEB_BUILD_ARCH}/Apptrix_org-linux-${DEB_BUILD_ARCH}-1023b1a.tar.xz | tar xf - -C /
+curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${DEB_BUILD_ARCH}/Apptrix_org-linux-${DEB_BUILD_ARCH}-1023b1a.tar.xz | tar xJf - -C /
 
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local

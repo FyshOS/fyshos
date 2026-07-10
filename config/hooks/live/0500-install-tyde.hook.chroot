@@ -1,4 +1,7 @@
 umask 002
+
+DEB_BUILD_ARCH="$(dpkg --print-architecture)"
+
 cd /tmp
 git clone https://github.com/fyshos/tyde
 cd tyde

@@ -52,9 +52,9 @@ $FYNE install github.com/andydotxyz/flappy@latest
 
 
 # app manager
-sudo apt-get -y update
 # sudo apt-get install -y apps
-sudo apt-get install -y curl xz-utils
+# curl and xz-utils come from utils.list.chroot - packages installed by a hook
+# are removed again by the installer.
 curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${ARTIFACT_ARCH}/Fyne%20Applications-linux-${ARTIFACT_ARCH}-caec085.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor

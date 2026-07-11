@@ -5,3 +5,8 @@ figlet
 git
 make
 fastfetch
+curl
+xz-utils
+
+plymouth
+plymouth-themes

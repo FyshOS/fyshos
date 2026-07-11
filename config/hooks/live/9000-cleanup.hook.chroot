@@ -1,0 +1,25 @@
+# live-build runs every hook in config/hooks/normal before any hook in
+# config/hooks/live, whatever the number prefix says. The stock cleanup hooks
+# (0110-0195) are all in normal/, so they ran before the build hooks here and
+# never saw what those left behind. Clean up after them.
+
+# Sources cloned by the tyde and fin hooks
+rm -rf /tmp/tyde /tmp/fin
+
+# Go module and build caches, in case a build hook left one behind
+rm -rf /root/go /root/.cache
+
+# Package documentation and translations. Man pages stay, along with the groff
+# macros man needs to render them. Keep the copyright files too - we
+# redistribute these packages - and keep the English locales.
+find /usr/share/doc -type f ! -name copyright -delete
+find /usr/share/doc -type l -delete
+find /usr/share/doc -mindepth 1 -type d -empty -delete
+rm -rf /usr/share/info/* /usr/share/lintian/*
+find /usr/share/locale -mindepth 1 -maxdepth 1 -type d ! -name 'en*' -exec rm -rf {} +
+
+# Truncate anything logged since 0140-remove-log-files ran
+for _FILE in $(find /var/log/ -type f)
+do
+	: > ${_FILE}
+done

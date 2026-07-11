@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# live-build has no config option for mksquashfs tuning, it only passes
+# $MKSQUASHFS_OPTIONS straight through. The mksquashfs default of 128K blocks
+# and no BCJ filter leaves several percent on the table for an image that is
+# mostly executables.
+. config/bootstrap
+
+MKSQUASHFS_OPTIONS="-b 1M"
+
+case "${LB_ARCHITECTURE}" in
+	amd64|i386)
+		MKSQUASHFS_OPTIONS="${MKSQUASHFS_OPTIONS} -Xbcj x86"
+		;;
+esac
+
+export MKSQUASHFS_OPTIONS
+
+lb build noauto "${@}"

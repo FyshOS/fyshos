@@ -13,8 +13,13 @@ libgio-2.0-dev
 # WebKit engine + the legacy WPEBackend-FDO display stack. surfy's webview is
 # built with -tags wpe_fdo (see 0500-install-tyde.hook.chroot) because Debian's
 # wpewebkit is built without the WPEPlatform headless headers.
+# i386 is built against bookworm, which is too old for our webview, so surfy is
+# not installed there and these are not needed.
+#nif ARCHITECTURE i386
+libwpewebkit-2.0-dev
 libwpe-1.0-dev
 libwpebackend-fdo-1.0-dev
+#endif
 libgbm-dev
 libasound2-dev
 libgstreamer1.0-dev

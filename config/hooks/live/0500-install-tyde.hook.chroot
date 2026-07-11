@@ -2,6 +2,14 @@ umask 002
 
 DEB_BUILD_ARCH="$(dpkg --print-architecture)"
 
+# Build artifacts are published under Go's arch names, which match dpkg's
+# except for 32bit intel (i386 vs 386).
+if [ "$DEB_BUILD_ARCH" = "i386" ]; then
+	ARTIFACT_ARCH="386"
+else
+	ARTIFACT_ARCH="$DEB_BUILD_ARCH"
+fi
+
 cd /tmp
 git clone https://github.com/fyshos/tyde
 cd tyde
@@ -22,9 +30,12 @@ $FYNE install github.com/fyne-io/terminal/cmd/fyneterm@master
 $FYNE install github.com/fyshos/calculator@latest
 $FYNE install github.com/fyshos/textedit@latest
 $FYNE install github.com/fyshos/focus@latest
-# wpe_fdo: use the legacy WPEBackend-FDO display backend, since Debian's
-# wpewebkit lacks the WPEPlatform headless headers the default backend needs.
-$FYNE install --tags wpe_fdo github.com/fyshos/surfy@latest
+# surfy needs a webkit newer than the bookworm base our i386 images build from.
+if [ "$DEB_BUILD_ARCH" != "i386" ]; then
+	# wpe_fdo: use the legacy WPEBackend-FDO display backend, since Debian's
+	# wpewebkit lacks the WPEPlatform headless headers the default backend needs.
+	$FYNE install --tags wpe_fdo github.com/fyshos/surfy@latest
+fi
 $FYNE install github.com/fyshos/movies@latest
 $FYNE install github.com/andydotxyz/slydes@latest
 $FYNE install github.com/andydotxyz/fomato@latest
@@ -44,10 +55,10 @@ $FYNE install github.com/andydotxyz/flappy@latest
 sudo apt-get -y update
 # sudo apt-get install -y apps
 sudo apt-get install -y curl xz-utils
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${DEB_BUILD_ARCH}/Fyne%20Applications-linux-${DEB_BUILD_ARCH}-caec085.tar.xz | tar xJf - -C /
+curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${ARTIFACT_ARCH}/Fyne%20Applications-linux-${ARTIFACT_ARCH}-caec085.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${DEB_BUILD_ARCH}/Apptrix_org-linux-${DEB_BUILD_ARCH}-1023b1a.tar.xz | tar xJf - -C /
+curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${ARTIFACT_ARCH}/Apptrix_org-linux-${ARTIFACT_ARCH}-1023b1a.tar.xz | tar xJf - -C /
 
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local

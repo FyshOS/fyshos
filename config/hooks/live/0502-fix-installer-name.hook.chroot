@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DESKTOP=/usr/share/applications/debian-installer-launcher.desktop
+
+# Drop the translated names so the branding below is not overridden
+sed -i '/^Name\[/d;/^GenericName\[/d;/^Comment\[/d' $DESKTOP
+sed -i 's/^Name=.*/Name=Install FyshOS/' $DESKTOP
+sed -i 's/^GenericName=.*/GenericName=Install FyshOS/' $DESKTOP
+sed -i 's/^Comment=.*/Comment=Install FyshOS to this computer/' $DESKTOP

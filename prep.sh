@@ -7,5 +7,6 @@ export DATE="`date "+%Y-%m-%d %H:%M:%S %Z"`"
 convert -font open-sans-bold -pointsize 15 -fill white -weight bold -draw "text 191,107 \"Built: ${DATE}\" " ./splash-tmp.png ./config/includes.binary/isolinux/splash.png
 rm splash-tmp.png
 
-lb config
+# Keep the ISO volume label in step with the build (max 32 chars)
+lb config --iso-volume "FyshOS `date "+%Y%m%d-%H:%M"`"
 

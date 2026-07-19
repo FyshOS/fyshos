@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Make the desktop "Install FyshOS" icon honour config/includes.installer/preseed.cfg.
+# Append the medium's preseed right after the initrd is unpacked, while the
+# plugin is still in /run/live/installer and before it adds its own settings.
+
+PLUGIN=/usr/share/debian-installer-launcher/plugins/live
+
+if ! grep -q 'cpio -id' "$PLUGIN"; then
+	echo "0503: no initrd unpack line in $PLUGIN, cannot apply preseed" >&2
+	exit 1
+fi
+
+awk '
+{ print }
+/cpio -id/ && !patched {
+	print ""
+	print "\t# Apply the preseed shipped on the medium, as the boot menu does."
+	print "\tif [ -e /run/live/medium/install/preseed.cfg ]; then"
+	print "\t\tcat /run/live/medium/install/preseed.cfg >> preseed.cfg"
+	print "\tfi"
+	patched = 1
+}
+' "$PLUGIN" > "$PLUGIN.new" && mv "$PLUGIN.new" "$PLUGIN"

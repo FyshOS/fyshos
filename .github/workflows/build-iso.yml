@@ -17,6 +17,7 @@ jobs:
           cd live-build
           git checkout da16d81ed
           patch scripts/build/installer_debian-installer < ../installer.patch
+          patch scripts/build/binary_grub-efi < ../grub-efi.patch
           make && sudo make install
       - name: Config
         run: |

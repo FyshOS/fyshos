@@ -4,5 +4,7 @@ lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
 	-d bookworm --debian-installer-distribution bookworm \
 	-a i386 --linux-flavours 686 \
+	--archive-areas "main non-free-firmware" \
+	--parent-archive-areas "main non-free-firmware" \
 	"${@}"
 

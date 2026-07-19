@@ -1,0 +1,17 @@
+Apple's older EFI firmware (tested on a MacPro5,1) hangs when the EFI partition's
+grub.cfg calls configfile at top level during early startup.
+
+Rendering some output first avoids it, so we just present a loading transition.
+
+--- /usr/lib/live/build/binary_grub-efi	2026-07-19 12:00:00.000000000 +0100
++++ /usr/lib/live/build/binary_grub-efi	2026-07-19 12:00:00.000000000 +0100
+@@ -230,6 +230,9 @@
+ # config from that same partition.
+ mkdir -p ${_CHROOT_DIR}/grub-efi-temp-cfg
+ cat >${_CHROOT_DIR}/grub-efi-temp-cfg/grub.cfg <<EOF
++terminal_output console
++echo "Loading FyshOS..."
++sleep 1
+ search --set=root --file /.disk/info
+ set prefix=(\\\$root)/boot/grub
+ configfile (\\\$root)/boot/grub/grub.cfg

@@ -4,5 +4,7 @@ lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
 	-d stable --debian-installer-distribution stable \
 	-a arm64 \
+	--archive-areas "main non-free-firmware" \
+	--parent-archive-areas "main non-free-firmware" \
 	"${@}"
 

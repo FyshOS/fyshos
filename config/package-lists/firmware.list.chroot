@@ -1,0 +1,19 @@
+# Listed explicitly rather than using `lb config --firmware-chroot true`, which
+# pulls the whole firmware set and a few hundred MB with it.
+
+firmware-linux-free
+
+# GPU microcode. amd-graphics covers radeon and amdgpu; misc-nonfree carries
+# the Intel i915 GuC/HuC blobs among others.
+firmware-amd-graphics
+firmware-misc-nonfree
+
+# Wireless. brcm80211 is what Macs of this era use; the rest cover the common
+# Intel/Realtek/Atheros parts found in PC laptops.
+firmware-brcm80211
+firmware-iwlwifi
+firmware-realtek
+firmware-atheros
+
+# Audio DSP for recent Intel platforms.
+firmware-sof-signed

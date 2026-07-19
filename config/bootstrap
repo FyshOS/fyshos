@@ -22,7 +22,7 @@ LB_DISTRIBUTION_BINARY="stable"
 LB_PARENT_DISTRIBUTION_BINARY="stable"
 
 # Select parent distribution for debian-installer to use
-LB_PARENT_DEBIAN_INSTALLER_DISTRIBUTION="stable"
+LB_PARENT_DEBIAN_INSTALLER_DISTRIBUTION="trixie"
 
 # Select archive areas to use
 LB_ARCHIVE_AREAS="main non-free-firmware"

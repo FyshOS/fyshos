@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -e
+
+# Bookworm ships Go 1.19, which rejects the "1.NN.P" form of the go directive
+# that Go 1.21+ writes - we need sooner to build most apps.
+# Trixie's golang is new enough, so this is a no-op on 64bit.
+
+GO_VERSION=1.26.5
+GO_SHA256_386=88c162b204e6eefcc32499453b492e80209f4a4c78c33092636901c540fb0d05
+
+PACKAGED=$(go version 2>/dev/null | sed -n 's/^go version go\([0-9.]*\).*/\1/p')
+if [ -n "$PACKAGED" ] && dpkg --compare-versions "$PACKAGED" ge 1.22; then
+	exit 0
+fi
+
+BUILD_ARCH="$(dpkg --print-architecture)"
+case "$BUILD_ARCH" in
+	i386)
+		GOARCH=386
+		GO_SHA256=$GO_SHA256_386
+		;;
+	*)
+		echo "Packaged go is $PACKAGED but no pinned tarball for $BUILD_ARCH" >&2
+		exit 1
+		;;
+esac
+
+TARBALL=go${GO_VERSION}.linux-${GOARCH}.tar.gz
+
+cd /tmp
+curl -fsSL --retry 3 -O https://go.dev/dl/${TARBALL}
+echo "${GO_SHA256}  ${TARBALL}" | sha256sum -c -
+
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf ${TARBALL}
+rm -f ${TARBALL}
+
+# /usr/local/bin sits ahead of /usr/bin in PATH, so this wins over the packaged
+# go for later hooks and the makefiles they call.
+sudo ln -sf /usr/local/go/bin/go /usr/local/bin/go
+sudo ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt

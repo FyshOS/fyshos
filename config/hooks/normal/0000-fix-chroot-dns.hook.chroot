@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# Trixie's postinst seeds the stub from the old resolv.conf first; bookworm's
+# does not. Seed it ourselves so the 32bit build matches.
+if [ -f /etc/.resolv.conf.systemd-resolved.bak ] && [ ! -s /run/systemd/resolve/stub-resolv.conf ]; then
+	mkdir -p /run/systemd/resolve
+	cp /etc/.resolv.conf.systemd-resolved.bak /run/systemd/resolve/stub-resolv.conf
+fi

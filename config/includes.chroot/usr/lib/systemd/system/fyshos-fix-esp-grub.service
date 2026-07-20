@@ -1,0 +1,14 @@
+[Unit]
+Description=Apply Apple EFI boot workaround to the ESP GRUB stub
+Documentation=https://github.com/FyshOS/FyshOS
+# A BIOS install has no ESP and does not need this.
+ConditionPathIsMountPoint=/boot/efi
+RequiresMountsFor=/boot/efi
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/fyshos-fix-esp-grub
+
+[Install]
+WantedBy=multi-user.target

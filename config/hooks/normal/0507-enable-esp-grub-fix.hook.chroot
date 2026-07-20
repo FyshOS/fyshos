@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Reapplies the Apple EFI boot workaround to the ESP GRUB stub, which
+# grub-install overwrites on every grub-efi upgrade.
+
+chmod 755 /usr/local/sbin/fyshos-fix-esp-grub
+sudo systemctl enable fyshos-fix-esp-grub

@@ -1,0 +1,45 @@
+#!/bin/sh
+# Apple's EFI firmware (tested on a MacPro5,1) hangs with a black screen and a
+# static underscore cursor when the EFI partition's grub.cfg calls configfile at
+# top level during early startup. Rendering some output first avoids it.
+#
+# The live ISO gets the same three lines via grub-efi.patch. On an installed
+# system the stub is written by grub-install instead, which reruns on every
+# grub-efi package upgrade and drops the workaround - so this runs on each boot
+# rather than once at install time.
+
+set -eu
+
+MARKER='# FyshOS Apple EFI workaround'
+ESP=/boot/efi
+found=0
+patched=0
+
+for cfg in "$ESP"/EFI/*/grub.cfg; do
+	[ -f "$cfg" ] || continue
+	found=$((found + 1))
+
+	grep -qF "$MARKER" "$cfg" && continue
+
+	# Only the handoff stub is affected. A full menu config renders on its
+	# own and must be left alone.
+	grep -q '^[[:space:]]*configfile' "$cfg" || continue
+
+	tmp=$(mktemp "$cfg.XXXXXX")
+	{
+		echo "$MARKER"
+		echo 'terminal_output console'
+		echo 'echo "Loading FyshOS..."'
+		echo 'sleep 1'
+		cat "$cfg"
+	} >"$tmp"
+	mv "$tmp" "$cfg"
+	patched=$((patched + 1))
+done
+
+if [ "$found" -eq 0 ]; then
+	echo "no grub.cfg found under $ESP/EFI - nothing patched" >&2
+	exit 1
+fi
+
+echo "checked $found ESP grub.cfg file(s), patched $patched"

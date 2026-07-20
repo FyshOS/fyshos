@@ -1,0 +1,11 @@
+[Match]
+Type=ether
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+RouteMetric=100
+
+[IPv6AcceptRA]
+RouteMetric=100

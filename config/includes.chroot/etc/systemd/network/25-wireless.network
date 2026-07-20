@@ -1,0 +1,12 @@
+[Match]
+Type=wlan
+
+[Network]
+DHCP=yes
+
+# Higher metric than wired, so a cabled connection wins when both are up.
+[DHCPv4]
+RouteMetric=600
+
+[IPv6AcceptRA]
+RouteMetric=600

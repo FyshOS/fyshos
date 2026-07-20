@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# iwd handles wifi association (tyde talks to it over DBus), systemd-networkd
+# does DHCP for both wired and wireless, systemd-resolved does DNS.
+
+sudo systemctl enable iwd
+sudo systemctl enable systemd-networkd
+sudo systemctl enable systemd-resolved
+
+# resolved owns resolv.conf; without this it stays whatever debootstrap left.
+sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

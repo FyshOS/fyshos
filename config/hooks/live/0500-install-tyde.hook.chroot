@@ -1,3 +1,4 @@
+set -e
 umask 002
 
 DEB_BUILD_ARCH="$(dpkg --print-architecture)"
@@ -55,10 +56,10 @@ $FYNE install github.com/andydotxyz/flappy@latest
 # sudo apt-get install -y apps
 # curl and xz-utils come from utils.list.chroot - packages installed by a hook
 # are removed again by the installer.
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${ARTIFACT_ARCH}/Fyne%20Applications-linux-${ARTIFACT_ARCH}-caec085.tar.xz | tar xJf - -C /
+curl -sfS --retry 3 https://build-artifacts.apptrix.ai/github/andydotxyz/fyne-io/apps/latest/linux-${ARTIFACT_ARCH}/Fyne%20Applications-linux-${ARTIFACT_ARCH}-caec085.tar.xz | tar xJf - -C /
 
 # Install the current testing app editor
-curl -s https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${ARTIFACT_ARCH}/Apptrix_org-linux-${ARTIFACT_ARCH}-v0.2.14.tar.xz | tar xJf - -C /
+curl -sfS --retry 3 https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-${ARTIFACT_ARCH}/Apptrix_org-linux-${ARTIFACT_ARCH}-v0.2.14.tar.xz | tar xJf - -C /
 
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local

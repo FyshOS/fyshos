@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 DESKTOP=/usr/share/applications/debian-installer-launcher.desktop
 
 # Drop the translated names so the branding below is not overridden

@@ -6,6 +6,7 @@
 sudo systemctl enable iwd
 sudo systemctl enable systemd-networkd
 sudo systemctl enable systemd-resolved
+sudo systemctl enable systemd-timesyncd
 
 # resolved owns resolv.conf; without this it stays whatever debootstrap left.
 sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

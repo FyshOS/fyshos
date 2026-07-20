@@ -51,6 +51,10 @@ jobs:
 
           sed -i 's/fastfetch/neofetch/g' config/package-lists/utils.list.chroot
 
+          # 32-bit targets BIOS machines, where grub-installer keeps grub-pc rather than purging.
+          sed -i '/^grub-efi-amd64-signed$/d; /^shim-signed$/d' config/package-lists/utils.list.chroot
+          sed -i 's/^grub-efi-amd64$/grub-pc/' config/package-lists/utils.list.chroot
+
           sudo lb clean --purge
           ./prep.sh i386
       - name: Build 32bit

@@ -1,9 +1,17 @@
 #!/bin/sh
 
+# 32-bit i386 build. Trixie dropped i386 entirely, so both the base system and
+# debian-installer stay on bookworm.
+
 lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
-	-d bookworm --debian-installer-distribution bookworm \
 	-a i386 --linux-flavours 686 \
+	-d bookworm \
+	--distribution-chroot bookworm --distribution-binary bookworm \
+	--parent-distribution bookworm \
+	--parent-distribution-chroot bookworm --parent-distribution-binary bookworm \
+	--debian-installer-distribution bookworm \
+	--parent-debian-installer-distribution bookworm \
 	--archive-areas "main non-free-firmware" \
 	--parent-archive-areas "main non-free-firmware" \
 	"${@}"

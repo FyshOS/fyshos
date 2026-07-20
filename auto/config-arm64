@@ -3,6 +3,7 @@
 lb config noauto \
 	--debian-installer-gui=true --debian-installer=live \
 	-d stable --debian-installer-distribution trixie \
+	--parent-debian-installer-distribution trixie \
 	-a arm64 \
 	--archive-areas "main non-free-firmware" \
 	--parent-archive-areas "main non-free-firmware" \

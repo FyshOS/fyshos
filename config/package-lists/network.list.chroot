@@ -1,2 +1,3 @@
 iwd
+systemd-resolved
 systemd-timesyncd

@@ -6,8 +6,14 @@
 # Sources cloned by the tyde and fin hooks
 rm -rf /tmp/tyde /tmp/fin
 
-# Go module and build caches, in case a build hook left one behind
-rm -rf /root/go /root/.cache
+# Go module and build caches, in case a build hook left one behind.
+if command -v go >/dev/null 2>&1; then
+	go clean -cache -modcache 2>/dev/null || true
+fi
+for _HOME in /root /home/*; do
+	rm -rf "${_HOME}/go" "${_HOME}/.cache/go-build" "${_HOME}/.cache/go"
+done
+rm -rf /root/.cache
 
 # Package documentation and translations. Man pages stay, along with the groff
 # macros man needs to render them. Keep the copyright files too - we

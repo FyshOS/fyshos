@@ -13,7 +13,7 @@ fi
 
 # Emit a clearly-marked line into the build log so each install is traceable.
 log_install() {
-	echo "==> [tyde] installing: $*"
+	echo "==> [Apps] Installing: $*"
 }
 
 # Log, then install a Fyne app. Extra flags (e.g. --tags) can be passed before
@@ -44,6 +44,7 @@ FYNE=/usr/local/bin/fyne
 # utilities
 fyne_install github.com/fyne-io/terminal/cmd/fyneterm@master
 fyne_install github.com/fyshos/calculator@latest
+fyne_install github.com/fyshos/fyles@latest
 fyne_install github.com/fyshos/textedit@latest
 fyne_install github.com/fyshos/focus@latest
 # surfy needs a webkit newer than the bookworm base our i386 images build from.

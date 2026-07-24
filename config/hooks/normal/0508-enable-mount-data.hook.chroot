@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Mounts an optional data partition from the USB stick at /mnt/data and links it
+# onto the desktop, so a stick large enough to carry the user's files exposes
+# them automatically on a live boot.
+
+chmod 755 /usr/local/sbin/fyshos-mount-data
+sudo systemctl enable fyshos-mount-data

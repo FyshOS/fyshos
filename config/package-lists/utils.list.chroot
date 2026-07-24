@@ -10,5 +10,7 @@ fastfetch
 curl
 xz-utils
 
+exfatprogs
+
 plymouth
 plymouth-themes

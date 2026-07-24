@@ -1,0 +1,124 @@
+#!/bin/sh
+# FyshOS boots as a live system from a USB stick (typically /dev/sda). When the
+# stick is large enough, the user can add an extra partition to keep their own
+# files on. If such a data partition exists we mount it at /mnt/data and drop a
+# link on the desktop so it is visible as soon as they log in.
+#
+# This is a no-op on non-live boots (no /run/live/medium) and idempotent across
+# reboots and re-runs.
+
+set -eu
+
+MOUNT_POINT=/mnt/data
+LINK_NAME=Data
+
+# The mount point of the medium we booted from. Newer live-boot uses
+# /run/live/medium; older releases used /lib/live/mount/medium.
+MEDIUM=""
+for m in /run/live/medium /lib/live/mount/medium; do
+	if mountpoint -q "$m"; then
+		MEDIUM="$m"
+		break
+	fi
+done
+if [ -z "$MEDIUM" ]; then
+	echo "no live medium mounted - not a live boot, nothing to do"
+	exit 0
+fi
+
+# Already mounted (e.g. a previous run in this boot)? Nothing to do.
+if mountpoint -q "$MOUNT_POINT"; then
+	echo "$MOUNT_POINT already mounted"
+	exit 0
+fi
+
+# The partition backing the live medium, and its parent disk (the USB stick).
+medium_src=$(findmnt -n -o SOURCE "$MEDIUM" 2>/dev/null || true)
+if [ -z "$medium_src" ]; then
+	echo "could not determine source device of $MEDIUM" >&2
+	exit 0
+fi
+medium_part=$(readlink -f "$medium_src")
+
+# /dev/sda1 -> sda ; also handles /dev/mmcblk0p1 -> mmcblk0
+boot_disk=$(lsblk -no PKNAME "$medium_src" 2>/dev/null | head -n1)
+if [ -z "$boot_disk" ]; then
+	echo "could not determine boot disk for $medium_src" >&2
+	exit 0
+fi
+boot_disk="/dev/$boot_disk"
+
+# Pick the partition on the boot disk labelled "data" (case-insensitive). We
+# select purely by label, never by size or position, so the layout of the boot
+# partitions is free to change. Skip the live medium itself, and anything already
+# mounted (e.g. a re-run in the same boot).
+data_part=""
+
+for part in $(lsblk -lnp -o NAME "$boot_disk" | tail -n +2); do
+	[ "$(readlink -f "$part")" = "$medium_part" ] && continue
+
+	mnt=$(lsblk -no MOUNTPOINT "$part" 2>/dev/null | head -n1)
+	[ -n "$mnt" ] && continue
+
+	label=$(lsblk -no LABEL "$part" | head -n1 | tr '[:upper:]' '[:lower:]')
+	if [ "$label" = "data" ]; then
+		data_part="$part"
+		break
+	fi
+done
+
+if [ -z "$data_part" ]; then
+	echo "no partition labelled 'data' found on $boot_disk"
+	exit 0
+fi
+
+# The desktop user owns the mount so they can read and write their files. The
+# live user is uid 1000; fall back to that if the name lookup ever fails.
+uid=1000
+gid=1000
+owner=$(getent passwd "$uid" | cut -d: -f1 || true)
+
+fstype=$(lsblk -no FSTYPE "$data_part" | head -n1)
+case "$fstype" in
+vfat | msdos | exfat | ntfs | ntfs3)
+	# These filesystems carry no Unix ownership, so grant it at mount time.
+	mount_opts="uid=$uid,gid=$gid,umask=0022"
+	;;
+*)
+	mount_opts=""
+	;;
+esac
+
+mkdir -p "$MOUNT_POINT"
+if [ -n "$mount_opts" ]; then
+	mount -o "$mount_opts" "$data_part" "$MOUNT_POINT" || {
+		echo "failed to mount $data_part ($fstype) at $MOUNT_POINT" >&2
+		exit 1
+	}
+else
+	mount "$data_part" "$MOUNT_POINT" || {
+		echo "failed to mount $data_part ($fstype) at $MOUNT_POINT" >&2
+		exit 1
+	}
+	# Native filesystems keep their own permissions; make sure the desktop user
+	# owns the top level of their data area.
+	chown "$uid:$gid" "$MOUNT_POINT" 2>/dev/null || true
+fi
+echo "mounted $data_part ($fstype) at $MOUNT_POINT"
+
+# Link it onto the desktop of each real user so it is visible at login.
+for home in /home/*; do
+	[ -d "$home" ] || continue
+	user=$(basename "$home")
+	desktop="$home/Desktop"
+	link="$desktop/$LINK_NAME"
+
+	mkdir -p "$desktop"
+	chown "$user:$user" "$desktop" 2>/dev/null || true
+
+	if [ ! -e "$link" ] && [ ! -L "$link" ]; then
+		ln -s "$MOUNT_POINT" "$link"
+		chown -h "$user:$user" "$link" 2>/dev/null || true
+		echo "linked $link -> $MOUNT_POINT"
+	fi
+done

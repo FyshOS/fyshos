@@ -1,0 +1,16 @@
+[Unit]
+Description=Mount the USB stick data partition and link it to the desktop
+Documentation=https://github.com/FyshOS/FyshOS
+# Only meaningful on a live boot, where the medium is mounted here.
+ConditionPathExists=/run/live/medium
+RequiresMountsFor=/run/live/medium
+# Have the desktop link in place before the graphical session starts.
+Before=graphical.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/fyshos-mount-data
+
+[Install]
+WantedBy=multi-user.target

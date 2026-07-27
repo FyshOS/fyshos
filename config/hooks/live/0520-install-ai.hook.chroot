@@ -1,0 +1,29 @@
+set -e
+umask 002
+
+log_install() {
+	echo "==> [AI] Installing: $*"
+}
+
+DEB_BUILD_ARCH="$(dpkg --print-architecture)"
+
+cd /tmp
+
+case "$DEB_BUILD_ARCH" in
+amd64|arm64)
+	log_install "kronk (model runner)"
+	go install github.com/ardanlabs/kronk/cmd/kronk@latest
+	sudo mv ~/go/bin/kronk /usr/local/bin
+	;;
+*)
+	echo "==> [AI] Skipping AI tooling on $DEB_BUILD_ARCH (64bit only)"
+	;;
+esac
+
+# The last of the build hooks that writes to /usr/local - hand everything the
+# tyde, apps and AI hooks installed there to the primary user's group.
+sudo chgrp -R 1000 /usr/local
+sudo chmod -R g+w /usr/local
+
+rm -rf ~/go
+rm -rf ~/.cache/go-build

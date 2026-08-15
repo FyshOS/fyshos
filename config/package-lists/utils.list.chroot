@@ -11,6 +11,9 @@ curl
 xz-utils
 
 exfatprogs
+iw
+pulseaudio
+pavucontrol
 
 plymouth
 plymouth-themes

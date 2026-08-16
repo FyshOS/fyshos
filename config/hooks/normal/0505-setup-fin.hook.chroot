@@ -5,9 +5,6 @@ cd /tmp
 git clone https://github.com/fyshos/fin
 cd fin
 
-# remove alias for testing
-sudo sed -i '/Alias/d' fin.service
-
 make
 sudo make install PREFIX=/usr
 

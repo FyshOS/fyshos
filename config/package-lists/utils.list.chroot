@@ -14,6 +14,8 @@ exfatprogs
 iw
 pulseaudio
 pavucontrol
+fprintd
+libpam-fprintd
 
 plymouth
 plymouth-themes

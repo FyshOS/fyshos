@@ -1,1 +1,1 @@
-sudo plymouth-set-default-theme fyshos
+plymouth-set-default-theme -R fyshos

@@ -9,7 +9,6 @@ make
 sudo make install PREFIX=/usr
 
 sudo echo "/usr/bin/fin" > /etc/X11/default-display-manager
-sudo systemctl enable fin
 
 rm -rf ~/go
 rm -rf ~/.cache/go-build

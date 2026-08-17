@@ -2,6 +2,7 @@
 
 set -e
 
-# fin is disabled on live so we start Xorg directly
+# fin is not enabled in the chroot (the installer enables it in-target), so the
+# live session starts Xorg directly and plymouth-quit.service clears the splash
 sudo systemctl enable startx
 

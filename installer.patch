@@ -1,5 +1,21 @@
+Two fixes against the pinned live-build (da16d81ed):
+
+1. arm64 is missing from the list of architectures that fetch the graphical
+   d-i, so --debian-installer-gui=true silently produced a text-only installer.
+2. The exclude list is only created by the commands that append to it, so an
+   empty list makes the following read fail.
+
 --- /usr/lib/live/build/installer_debian-installer	2021-09-08 08:33:36.179278047 +0100
 +++ /usr/lib/live/build/installer_debian-installer	2021-09-08 08:34:04.751324009 +0100
+@@ -264,7 +264,7 @@
+ if [ "${LB_DEBIAN_INSTALLER_GUI}" = "true" ]
+ then
+ 	case "${LB_ARCHITECTURE}" in
+-		amd64|i386)
++		amd64|arm64|i386)
+ 			DOWNLOAD_GTK_INSTALLER=true
+ 			;;
+ 
 @@ -613,6 +613,7 @@
  	fi
  

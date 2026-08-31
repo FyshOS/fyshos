@@ -1,0 +1,9 @@
+# FyshOS package archive - build only. live-build deletes this file again
+# before the image is made and ships fyshos.list.binary in its place.
+#
+# Plain http, like the Debian mirrors in config/bootstrap: ca-certificates
+# is not yet available.
+#
+# Trust comes from fyshos.key.chroot, which live-build has already placed in
+# /etc/apt/trusted.gpg.d by the time this is read.
+deb http://packages.fyshos.com stable main

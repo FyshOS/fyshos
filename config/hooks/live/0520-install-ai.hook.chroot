@@ -21,7 +21,7 @@ amd64|arm64)
 esac
 
 # The last of the build hooks that writes to /usr/local - hand everything the
-# tyde, apps and AI hooks installed there to the primary user's group.
+# saver, apps and AI hooks installed there to the primary user's group.
 sudo chgrp -R 1000 /usr/local
 sudo chmod -R g+w /usr/local
 

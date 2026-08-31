@@ -1,0 +1,5 @@
+# FyshOS package archive, as shipped in the live and installed systems.
+#
+# Trust is scoped to this one archive with signed-by rather than the system-wide
+# /etc/apt/trusted.gpg.d.
+deb [signed-by=/usr/share/keyrings/fyshos-archive-keyring.gpg] https://packages.fyshos.com stable main

@@ -1,0 +1,13 @@
+# Applications from packages.fyshos.com.
+
+# The desktop environment. Ships /usr/share/xsessions/tyde.desktop, so fin
+# offers it as a session, and tyde_runner for /etc/skel/.xsession to exec.
+tyde
+
+# The login manager. Ships fin.service but no maintainer scripts, so it is not
+# enabled here - the live session starts Xorg directly through startx.service
+# and the installer enables fin in-target (config/includes.installer/preseed.cfg).
+fin
+
+fyne-applications
+fyneterm

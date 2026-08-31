@@ -3,16 +3,8 @@ umask 002
 
 # Emit a clearly-marked line into the build log so each install is traceable.
 log_install() {
-	echo "==> [Tyde] Installing: $*"
+	echo "==> [Saver] Installing: $*"
 }
-
-log_install "tyde (develop)"
-cd /tmp
-git clone https://github.com/fyshos/tyde
-cd tyde
-git checkout develop
-make
-sudo make install
 
 log_install "fyshsaver"
 go install github.com/FyshOS/saver/cmd/fyshsaver@main

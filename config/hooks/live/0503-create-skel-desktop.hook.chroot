@@ -1,6 +1,9 @@
 set -e
 
 # tyde and its fyles module both hardcode $HOME/Desktop, so every account needs
-# that directory to exist before it can show anything on the desktop.
-mkdir -p /etc/skel/Desktop
-chmod 0755 /etc/skel/Desktop
+# that directory to exist before it can show anything on the desktop. Music and
+# Videos are not created by anything else at login, so seed them here as well.
+for dir in Desktop Music Videos; do
+	mkdir -p "/etc/skel/$dir"
+	chmod 0755 "/etc/skel/$dir"
+done

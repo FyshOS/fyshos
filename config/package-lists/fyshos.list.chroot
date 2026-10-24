@@ -12,3 +12,10 @@ fin
 fyne-applications
 fyneterm
 fyshsaver
+fyles
+
+# The web browser. Its webview needs a newer WPE WebKit than the bookworm base
+# the i386 image is built from, so the archive carries no i386 build of it.
+#nif ARCHITECTURE i386
+surfy
+#endif

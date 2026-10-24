@@ -26,21 +26,14 @@ fyne_install() {
 cd /tmp
 
 log_install "fyne CLI tool"
-go install fyne.io/tools/cmd/fyne@main
+go install fyne.io/tools/cmd/fyne@latest
 sudo mv ~/go/bin/fyne /usr/local/bin
 FYNE=/usr/local/bin/fyne
 
 # utilities
 fyne_install github.com/fyshos/calculator@latest
-fyne_install github.com/fyshos/fyles@latest
 fyne_install github.com/fyshos/textedit@latest
 fyne_install github.com/fyshos/focus@latest
-# surfy needs a webkit newer than the bookworm base our i386 images build from.
-if [ "$DEB_BUILD_ARCH" != "i386" ]; then
-	# wpe_fdo: use the legacy WPEBackend-FDO display backend, since Debian's
-	# wpewebkit lacks the WPEPlatform headless headers the default backend needs.
-	fyne_install --tags wpe_fdo github.com/fyshos/surfy@latest
-fi
 fyne_install github.com/fyshos/movies@latest
 fyne_install github.com/andydotxyz/slydes@latest
 fyne_install github.com/andydotxyz/fomato@latest
@@ -53,6 +46,7 @@ fyne_install github.com/fyshos/fong@latest
 fyne_install github.com/fyshos/tidebreaker@latest
 fyne_install github.com/fyshos/elemental@latest
 fyne_install github.com/fyshos/starbreaker@latest
+fyne_install github.com/fyshos/froggy@latest
 
 
 # Install the current testing app editor
